@@ -1,1 +1,5 @@
-<app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+<!-- 不像下方存在task 變數 改用 $event替代 -->
+<app-add-task (updateEvent)="updateTaskFromP($event)"></app-add-task>
+
+<app-task-item *ngFor="let task of tasks" [task]="task" (deleteTaskEvent)="deleteTaskFromP(task)"
+  (onToggleEvent)="toggleTaskFromP(task)"></app-task-item>
