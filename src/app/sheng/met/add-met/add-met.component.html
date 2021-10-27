@@ -1,63 +1,39 @@
 <div [ngStyle]="{ width: '50rem' }">
-  <form class="add-met-form">
+  <form class="add-met-form" (ngSubmit)='onSubmit()'>
     <label for="float-input">股東會名稱</label>
-    <input
-      [ngStyle]="{ width: '100%' }"
-      id="float-input"
-      type="text"
-      pInputText
-    />
+    <input [ngStyle]="{ width: '100%' }" id="float-input" type="text" pInputText [(ngModel)]="title" name='title' />
     <label for="float-input">會議編碼</label>
     <div [ngStyle]="{ color: 'gray' }" class="text-display">
       {{ serialNum }}
     </div>
-    <label for="">logo</label>
+    <label for="">公司Logo</label>
     <div class="logo-ipt">
       <div class="logo-wrap">
         <img [src]="logo_url" alt="" />
       </div>
       <div class="upload-btn">
-        <button
-          pButton
-          pRipple
-          type="button"
-          label="Primary"
-          class="p-button-raised p-button-text"
-          (click)="uploadFile()"
-        ></button>
+        <button pButton pRipple type="button" icon='pi pi-upload' class="p-button-raised p-button-text"
+          (click)="uploadFile()"></button>
       </div>
     </div>
-    <label for="float-input">資訊</label>
-    <input
-      [ngStyle]="{ width: '100%' }"
-      id="float-input"
-      type="text"
-      pInputText
-    />
-    <label for="float-input">日期</label>
-    <p-calendar
-      [(ngModel)]="date"
-      selectionMode="range"
-      [readonlyInput]="true"
-      inputId="range"
-    ></p-calendar>
+    <label for="float-input">會議資訊編輯</label>
+    <!-- <input [ngStyle]="{ width: '100%' }" id="float-input" type="text" pInputText /> -->
+    <div class="editor-wrap">
+      <angular-editor [(ngModel)]="met_des" [config]="editorConfig" name='met_des'>
+      </angular-editor>
+    </div>
+    <label for="float-input">股東會時間</label>
+    <div class="date-wrap">
+      <p-calendar [inputStyle]="{'width':'280px'}" [(ngModel)]="date" selectionMode="range" [showTime]="true"
+        [readonlyInput]="true" inputId="range" name='date' placeholder='會議期間'>
+      </p-calendar>
+    </div>
     <label for="float-input">上次編輯時間</label>
-    <div [ngStyle]="{ color: 'gray' }" class="text-display">131213113</div>
+    <div [ngStyle]="{ color: 'gray' }" class="text-display">{{last_update_time|date:'medium'}}</div>
     <div class="btns">
-      <button
-        pButton
-        pRipple
-        type="button"
-        label="送出"
-        class="p-button-raised"
-      ></button>
-      <button
-        pButton
-        pRipple
-        type="button"
-        label="取消"
-        class="p-button-outlined"
-      ></button>
+      <button pButton pRipple type="submit" label="送出" class="p-button-raised"></button>
+      <button pButton pRipple type="button" label="取消" class="p-button-outlined"></button>
     </div>
   </form>
+  <!-- <div [innerHTML]='htmlSnippet'></div> -->
 </div>

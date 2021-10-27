@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule}from '@angular/platform-browser/animations'
+import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
-import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -52,6 +55,9 @@ const appRoutes: Routes = [
     InputTextModule,
     TableModule,
     CalendarModule,
+    AngularEditorModule,
+    BrowserAnimationsModule,
+
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
   ],
   providers: [],
