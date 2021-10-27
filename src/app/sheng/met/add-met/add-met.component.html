@@ -8,7 +8,9 @@
       pInputText
     />
     <label for="float-input">會議編碼</label>
-    <div [ngStyle]="{ color: 'gray' }">131213113</div>
+    <div [ngStyle]="{ color: 'gray' }" class="text-display">
+      {{ serialNum }}
+    </div>
     <label for="">logo</label>
     <div class="logo-ipt">
       <div class="logo-wrap">
@@ -40,7 +42,7 @@
       inputId="range"
     ></p-calendar>
     <label for="float-input">上次編輯時間</label>
-    <div [ngStyle]="{ color: 'gray' }">131213113</div>
+    <div [ngStyle]="{ color: 'gray' }" class="text-display">131213113</div>
     <div class="btns">
       <button
         pButton

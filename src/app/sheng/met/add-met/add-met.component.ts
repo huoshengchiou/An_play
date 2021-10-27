@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AddMetComponent implements OnInit {
   title: string = '';
-  serialNum: string = '';
+  serialNum: string = '691-69-0694';
   logo_url: any = 'https://dummyimage.com/100x100/050505/ededf0.png';
   met_des: string = '';
   date: Date = new Date();
@@ -16,7 +16,14 @@ export class AddMetComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.serialNum = this.randomSerial();
+  }
+
+  randomSerial(): string {
+    const rdNum = () => (Math.random() * 10) | 0;
+    return `${rdNum()}${rdNum()}${rdNum()}-${rdNum()}${rdNum()}-${rdNum()}${rdNum()}${rdNum()}`;
+  }
 
   imgOperate(files: any, indicateObj: any): any {
     const [file] = files;
