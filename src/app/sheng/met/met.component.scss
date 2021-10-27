@@ -1,0 +1,36 @@
+.edge-wrap {
+  width: 100vw;
+  min-height: 100vh;
+  background: teal;
+  display: grid;
+  place-items: center;
+}
+
+.content {
+  min-width: 50%;
+  min-height: 50%;
+  background: white;
+}
+
+.list-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0.5rem;
+}
+
+.ib {
+  display: inline-block;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+}
+
+.op-btn-wrap {
+  width: 10rem;
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  // background: teal;
+}

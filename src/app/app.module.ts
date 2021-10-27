@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {HttpClientModule}from'@angular/common/http'
-import { Routes,RouterModule } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,15 +17,16 @@ import { TaskItemComponent } from './components/task-item/task-item.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
-
-
+import { MetComponent } from './sheng/met/met.component';
+import { AddMetComponent } from './sheng/met/add-met/add-met.component';
+import { MetStateComponent } from './sheng/met/met-state/met-state.component';
+import { CalendarModule } from 'primeng/calendar';
 
 const appRoutes: Routes = [
-{path:'',component: TasksComponent},
-{path:'about',component: AboutComponent}
-]
-
-
+  { path: '', component: TasksComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'sheng/met', component: MetComponent },
+];
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ const appRoutes: Routes = [
     TaskItemComponent,
     AddTaskComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    MetComponent,
+    AddMetComponent,
+    MetStateComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,9 +48,13 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes,{enableTracing:true})
+    ButtonModule,
+    InputTextModule,
+    TableModule,
+    CalendarModule,
+    RouterModule.forRoot(appRoutes, { enableTracing: true }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

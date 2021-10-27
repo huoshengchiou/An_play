@@ -1,0 +1,100 @@
+<div class="edge-wrap">
+  <div class="content">
+    <app-add-met></app-add-met>
+    <div class="list-head">
+      <button pButton pRipple type="button" label="Primary">+新增會議</button>
+      <div class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="Search"
+          [(ngModel)]="filterTt"
+          (ngModelChange)="filterMets()"
+        />
+      </div>
+    </div>
+    <div class="list">
+      <p-table
+        [value]="mets"
+        dataKey="id"
+        [rowHover]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} 筆"
+        [filterDelay]="0"
+        [globalFilterFields]="['title']"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="text-align: center">vin</th>
+            <th style="text-align: center">Year</th>
+            <th style="text-align: center">Brand</th>
+            <th style="text-align: center">Color</th>
+            <th style="text-align: center">op</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-met>
+          <tr>
+            <td style="text-align: center">{{ met.title }}</td>
+            <td style="text-align: center">{{ met.serial }}</td>
+            <td style="text-align: center">{{ met.date }}</td>
+            <td style="text-align: center">
+              <div *ngIf="met.state === 1">
+                <i class="pi pi-circle-on" style="color: red"></i>會議中
+              </div>
+              <div *ngIf="met.state === 2">已結束</div>
+              <div *ngIf="met.state === 3">尚未開始</div>
+            </td>
+
+            <td>
+              <div class="op-btn-wrap">
+                <p-button styleClass="p-button-sm">編輯</p-button>
+                <p-button styleClass="p-button-sm">預覽</p-button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <!-- <table>
+        <thead>
+          <tr>
+            <th>The table header</th>
+            <th>The table header</th>
+            <th>The table header</th>
+            <th>The table header</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let met of mets">
+            <td>{{ met.title }}</td>
+            <td>{{ met.id }}</td>
+            <td>{{ met.date }}</td>
+            <td>{{ met.state }}</td>
+            <td>
+              <div>
+                <p-button styleClass="p-button-sm">動作1</p-button>
+                <p-button styleClass="p-button-sm">動作2</p-button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+      <!-- <div class="list-pagination">
+        頁
+        <div class="ib">
+          <p-button icon="pi pi-chevron-left"></p-button>
+        </div>
+        <div class="ib"><input type="text" /></div>
+        <div class="ib btn"><i class="pi-chevron-right"></i></div>
+        之總頁|每頁
+        <select name="" id="">
+          <option value="">1</option>
+        </select>
+        筆|共總筆
+      </div> -->
+    </div>
+  </div>
+</div>

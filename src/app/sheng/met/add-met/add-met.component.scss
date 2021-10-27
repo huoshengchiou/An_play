@@ -1,0 +1,33 @@
+.add-met-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  place-items: center;
+  gap: 14px;
+}
+
+.logo-ipt {
+  display: flex;
+  gap: 10px;
+  justify-self: start;
+  .logo-wrap {
+    width: 100px;
+    height: 100px;
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .upload-btn {
+    align-self: flex-end;
+  }
+}
+
+.btns {
+  grid-column: span 2;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
