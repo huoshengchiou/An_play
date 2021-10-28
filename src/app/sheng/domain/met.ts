@@ -3,7 +3,8 @@ export interface met {
   serial: string;
   title: string;
   date: string;
-  state: string;
+  start_date: string;
+  end_date: string;
 }
 
 export interface Car {

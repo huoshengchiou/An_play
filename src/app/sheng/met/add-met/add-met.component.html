@@ -1,39 +1,95 @@
-<div [ngStyle]="{ width: '50rem' }">
-  <form class="add-met-form" (ngSubmit)='onSubmit()'>
-    <label for="float-input">股東會名稱</label>
-    <input [ngStyle]="{ width: '100%' }" id="float-input" type="text" pInputText [(ngModel)]="title" name='title' />
-    <label for="float-input">會議編碼</label>
-    <div [ngStyle]="{ color: 'gray' }" class="text-display">
-      {{ serialNum }}
+<form class="add-met-form" (ngSubmit)="onSubmit()">
+  <label for="title" class="form-title">股東會名稱</label>
+  <div class="txtIpt" data-error="{}">
+    <input
+      [ngStyle]="{ width: '100%' }"
+      id="title"
+      type="text"
+      pInputText
+      [(ngModel)]="title"
+      name="title"
+      required
+      minlength="10"
+      #metTitle="ngModel"
+    />
+    <div
+      *ngIf="metTitle.invalid && (metTitle.dirty || metTitle.touched)"
+      class="alert"
+    >
+      <div *ngIf="metTitle.errors?.required">請輸入會議名稱</div>
+      <div *ngIf="metTitle.errors?.minlength">會議名稱必須大於10字</div>
     </div>
-    <label for="">公司Logo</label>
-    <div class="logo-ipt">
-      <div class="logo-wrap">
-        <img [src]="logo_url" alt="" />
-      </div>
-      <div class="upload-btn">
-        <button pButton pRipple type="button" icon='pi pi-upload' class="p-button-raised p-button-text"
-          (click)="uploadFile()"></button>
-      </div>
+  </div>
+  <label for="float-input" class="form-title op5">會議編碼</label>
+  <div [ngStyle]="{ color: 'gray' }" class="text-display">
+    {{ serialNum }}
+  </div>
+  <label for="float-input" class="form-title op5">會議密碼</label>
+  <div [ngStyle]="{ color: 'gray' }" class="text-display">
+    {{ met_pwd }}
+  </div>
+  <label for="" class="form-title">公司Logo</label>
+  <div class="logo-ipt">
+    <div class="logo-wrap">
+      <img [src]="logo_url" alt="" />
     </div>
-    <label for="float-input">會議資訊編輯</label>
-    <!-- <input [ngStyle]="{ width: '100%' }" id="float-input" type="text" pInputText /> -->
-    <div class="editor-wrap">
-      <angular-editor [(ngModel)]="met_des" [config]="editorConfig" name='met_des'>
-      </angular-editor>
+    <div class="upload-btn">
+      <button
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-upload"
+        class="p-button-raised p-button-text"
+        (click)="uploadFile()"
+      ></button>
     </div>
-    <label for="float-input">股東會時間</label>
-    <div class="date-wrap">
-      <p-calendar [inputStyle]="{'width':'280px'}" [(ngModel)]="date" selectionMode="range" [showTime]="true"
-        [readonlyInput]="true" inputId="range" name='date' placeholder='會議期間'>
-      </p-calendar>
-    </div>
-    <label for="float-input">上次編輯時間</label>
-    <div [ngStyle]="{ color: 'gray' }" class="text-display">{{last_update_time|date:'medium'}}</div>
-    <div class="btns">
-      <button pButton pRipple type="submit" label="送出" class="p-button-raised"></button>
-      <button pButton pRipple type="button" label="取消" class="p-button-outlined"></button>
-    </div>
-  </form>
-  <!-- <div [innerHTML]='htmlSnippet'></div> -->
-</div>
+  </div>
+  <label for="float-input" class="form-title">會議資訊編輯</label>
+  <!-- <input [ngStyle]="{ width: '100%' }" id="float-input" type="text" pInputText /> -->
+  <div class="editor-wrap">
+    <angular-editor
+      [(ngModel)]="met_des"
+      [config]="editorConfig"
+      name="met_des"
+    >
+    </angular-editor>
+  </div>
+  <label for="float-input" class="form-title">股東會時間</label>
+  <div class="date-wrap">
+    <p-calendar
+      [inputStyle]="{ width: '280px' }"
+      [(ngModel)]="date"
+      selectionMode="range"
+      [showTime]="true"
+      [readonlyInput]="true"
+      inputId="range"
+      name="date"
+      placeholder="會議期間"
+    >
+    </p-calendar>
+  </div>
+  <label for="float-input" class="op5">上次編輯時間</label>
+  <div [ngStyle]="{ color: 'gray' }" class="text-display">
+    {{ last_update_time | date: "medium" }}
+  </div>
+  <div class="btns">
+    <button
+      pButton
+      pRipple
+      type="submit"
+      label="送出"
+      [disabled]="metTitle.invalid"
+      class="p-button-raised"
+    ></button>
+    <a routerLink="/sheng/met">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="取消"
+        class="p-button-outlined"
+      ></button>
+    </a>
+  </div>
+</form>
+<!-- <div [innerHTML]='htmlSnippet'></div> -->

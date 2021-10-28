@@ -1,21 +1,10 @@
-.edge-wrap {
-  width: 100vw;
-  min-height: 100vh;
-  background: teal;
-  display: grid;
-  place-items: center;
-}
-
-.content {
-  min-width: 50%;
-  min-height: 50%;
-  background: white;
-}
-
 .list-head {
   display: flex;
   justify-content: space-between;
   padding: 2rem 0.5rem;
+  > a {
+    text-decoration: none;
+  }
 }
 
 .ib {
@@ -33,4 +22,34 @@
   gap: 5px;
   justify-content: space-between;
   // background: teal;
+}
+
+.loading {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  min-height: 50vh;
+}
+
+.shine {
+  // color: azure;
+  animation: shining 2s infinite linear reverse;
+}
+
+@keyframes shining {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
 }

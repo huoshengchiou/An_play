@@ -1,5 +1,9 @@
+a {
+  text-decoration: none;
+}
 .add-met-form {
   width: 100%;
+  padding: 5rem;
   display: grid;
   grid-template-columns: 100px 1fr;
   place-items: center;
@@ -44,4 +48,22 @@
 
 .date-wrap {
   justify-self: start;
+}
+
+.txtIpt {
+  width: 100%;
+  position: relative;
+  .alert {
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+  }
+}
+
+.form-title {
+  font-weight: bold;
+}
+
+.op5 {
+  opacity: 0.5;
 }

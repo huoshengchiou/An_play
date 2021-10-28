@@ -1,0 +1,13 @@
+.edge-wrap {
+  width: 100vw;
+  min-height: 100vh;
+  background: teal;
+  display: grid;
+  place-items: center;
+}
+
+.content {
+  min-width: 50%;
+  min-height: 50%;
+  background: white;
+}

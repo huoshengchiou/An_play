@@ -1,87 +1,95 @@
-<div class="edge-wrap">
-  <div class="content">
-    <app-add-met></app-add-met>
-    <div class="list-head">
-      <button pButton pRipple type="button" label="Primary">+新增會議</button>
-      <div class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input type="text" pInputText placeholder="Search" [(ngModel)]="filterTt" (ngModelChange)="filterMets()" />
-      </div>
-    </div>
-    <div class="list">
-      <p-table [value]="mets" dataKey="id" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} 筆" [filterDelay]="0"
-        [globalFilterFields]="['title']">
-        <ng-template pTemplate="header">
-          <tr>
-            <th style="text-align: center">會議名稱</th>
-            <th style="text-align: center">會議號碼</th>
-            <th style="text-align: center">股東會日期/時間<p-sortIcon field="date"></p-sortIcon>
-            </th>
-            <th style="text-align: center">狀態</th>
-            <th style="text-align: center">動作</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-met>
-          <tr>
-            <td style="text-align: center">{{ met.title }}</td>
-            <td style="text-align: center">{{ met.serial }}</td>
-            <td style="text-align: center">{{ met.date }}</td>
-            <td style="text-align: center">
-              <div *ngIf="met.state === 1">
-                <i class="pi pi-circle-on" style="color: red;font-size: 0.2rem"></i>會議中
-              </div>
-              <div *ngIf="met.state === 2">已結束</div>
-              <div *ngIf="met.state === 3">尚未開始</div>
-            </td>
-
-            <td>
-              <div class="op-btn-wrap">
-                <p-button styleClass="p-button-sm">編輯</p-button>
-                <p-button styleClass="p-button-sm">預覽</p-button>
-              </div>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-      <!-- <table>
-        <thead>
-          <tr>
-            <th>The table header</th>
-            <th>The table header</th>
-            <th>The table header</th>
-            <th>The table header</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let met of mets">
-            <td>{{ met.title }}</td>
-            <td>{{ met.id }}</td>
-            <td>{{ met.date }}</td>
-            <td>{{ met.state }}</td>
-            <td>
-              <div>
-                <p-button styleClass="p-button-sm">動作1</p-button>
-                <p-button styleClass="p-button-sm">動作2</p-button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-      <!-- <div class="list-pagination">
-        頁
-        <div class="ib">
-          <p-button icon="pi pi-chevron-left"></p-button>
-        </div>
-        <div class="ib"><input type="text" /></div>
-        <div class="ib btn"><i class="pi-chevron-right"></i></div>
-        之總頁|每頁
-        <select name="" id="">
-          <option value="">1</option>
-        </select>
-        筆|共總筆
-      </div> -->
+<div *ngIf="loading" class="loading">
+  <i class="pi pi-spin pi-spinner" style="font-size: 3rem; color: #2196f3"></i>
+</div>
+<div *ngIf="!loading">
+  <div class="list-head">
+    <a routerLink="/sheng/met/create">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="新增會議"
+        icon="pi pi-book"
+      ></button>
+    </a>
+    <div class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        placeholder="Search"
+        [(ngModel)]="filterTt"
+        (ngModelChange)="filterMets()"
+      />
     </div>
   </div>
+  <div class="list">
+    <p-table
+      [value]="mets"
+      dataKey="id"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="第 {first} 至 {last} 筆 | 共 {totalRecords} 筆"
+      [filterDelay]="0"
+      [globalFilterFields]="['title']"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="text-align: center">會議名稱</th>
+          <th style="text-align: center">會議號碼</th>
+          <th style="text-align: center">
+            股東會日期/時間<p-sortIcon
+              field="date"
+              (click)="sortMets('start_date')"
+            ></p-sortIcon>
+          </th>
+          <th style="text-align: center">狀態</th>
+          <th style="text-align: center">動作</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-met style="height: 50vh">
+        <tr>
+          <td style="text-align: center; font-weight: bold">{{ met.title }}</td>
+          <td style="text-align: center">{{ met.serial }}</td>
+          <td style="text-align: center">
+            {{ met.start_date | date: "short" }} -
+            {{ met.end_date | date: "short" }}
+          </td>
+          <td style="text-align: center">
+            <div *ngIf="met.state === 1">
+              <i
+                class="pi pi-circle-on shine"
+                style="color: red; font-size: 0.2rem"
+              ></i
+              >會議中
+            </div>
+            <div *ngIf="met.state === 2" style="color: orange">已結束</div>
+            <div *ngIf="met.state === 3" style="color: rgb(106, 155, 33)">
+              尚未開始
+            </div>
+          </td>
+
+          <td>
+            <div class="op-btn-wrap">
+              <p-button
+                styleClass="p-button-sm p-button-outlined p-button-secondary"
+                (click)="showDialog()"
+                >編輯</p-button
+              >
+              <p-button
+                styleClass="p-button-sm p-button-outlined"
+                (click)="showDialog()"
+                >預覽</p-button
+              >
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
+
+<p-dialog header="系統維護中" [(visible)]="dis_Dialog"> 系統維護中 </p-dialog>

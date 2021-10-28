@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MetService } from '../services/met.service';
-
 import { met } from '../domain/met';
 
 @Component({
@@ -12,10 +11,16 @@ import { met } from '../domain/met';
 export class MetComponent implements OnInit {
   mets: met[] = [];
   filterTt: string = '';
+  dis_Dialog: boolean = false;
+  loading: boolean = true;
+
   constructor(private metService: MetService) {}
+
   ngOnInit(): void {
+    this.loading = true;
     this.metService.getMets().subscribe((res) => {
       this.mets = res;
+      this.loading = false;
     });
   }
   ngOnChanges(change: any) {
@@ -23,14 +28,18 @@ export class MetComponent implements OnInit {
   }
 
   filterMets(): void {
-    // this.mets = this.mets.filter((met) => met.id === 1);
-    //     console.log(this.filterTt);
     this.metService.filterMets(this.filterTt).subscribe((res) => {
       this.mets = res;
     });
   }
 
-  handleFilter(event: any) {
-    console.log(event);
+  sortMets(sortKey: string): void {
+    this.metService.sortMets(sortKey, this.filterTt).subscribe((res) => {
+      this.mets = res;
+    });
+  }
+
+  showDialog() {
+    this.dis_Dialog = !this.dis_Dialog;
   }
 }
