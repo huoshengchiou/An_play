@@ -22,7 +22,6 @@ import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MetComponent } from './sheng/met/met.component';
 import { AddMetComponent } from './sheng/met/add-met/add-met.component';
-import { MetStateComponent } from './sheng/met/met-state/met-state.component';
 import { CalendarModule } from 'primeng/calendar';
 
 const appRoutes: Routes = [
@@ -44,7 +43,6 @@ const appRoutes: Routes = [
     FooterComponent,
     MetComponent,
     AddMetComponent,
-    MetStateComponent,
   ],
   imports: [
     BrowserModule,
