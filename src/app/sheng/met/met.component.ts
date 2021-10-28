@@ -42,4 +42,8 @@ export class MetComponent implements OnInit {
   showDialog() {
     this.dis_Dialog = !this.dis_Dialog;
   }
+
+  // dynamicStyles() {
+  //   return { color: 'red' };
+  // }
 }
