@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MetService } from '../services/met.service';
-import { met } from '../domain/met';
+import { met,popMsg } from '../domain/met';
 
 @Component({
   selector: 'app-met',
@@ -12,7 +12,9 @@ export class MetComponent implements OnInit {
   mets: met[] = [];
   filterTt: string = '';
   dis_Dialog: boolean = false;
+  dis_pop:boolean = false;
   loading: boolean = true;
+  popMsg:popMsg|null=null
 
   constructor(private metService: MetService) {}
 
@@ -41,6 +43,11 @@ export class MetComponent implements OnInit {
 
   showDialog() {
     this.dis_Dialog = !this.dis_Dialog;
+  }
+
+  callPop(met:popMsg){
+    this.popMsg=met
+    this.dis_pop=true
   }
 
   // dynamicStyles() {

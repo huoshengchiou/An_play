@@ -1,0 +1,41 @@
+<div class="pop-content" *ngIf="popMsg">
+  <p-divider align="left" type="dashed">
+    <b>公司</b>
+  </p-divider>
+  <div class='company'>
+    <div class='company-logo'><img src={{popMsg.logo_url}} alt=""></div>
+    <div class='company-name'>{{popMsg.company}}</div>
+  </div>
+  <p-divider align="left" type="dashed">
+    <b>會議編號</b>
+  </p-divider>
+  <div>{{popMsg.serial}}</div>
+  <p-divider align="left" type="dashed">
+    <b>會議名稱</b>
+  </p-divider>
+  <div>{{popMsg.title}}</div>
+  <p-divider align="left" type="dashed">
+    <b>會議名稱</b>
+  </p-divider>
+  <div>{{popMsg.start_date|date}} - {{popMsg.end_date|date}}</div>
+  <p-divider align="left" type="dashed">
+    <b>會議訊息</b>
+  </p-divider>
+
+  <div [innerHTML]='popMsg.met_des'></div>
+
+
+
+</div>
+
+
+<!-- id: number;
+  serial: string;
+  title: string;
+  date: string;
+  start_date: string;
+  end_date: string;
+  company:string;
+  logo_url:string;
+  met_des: string;
+  met_pwd:string -->

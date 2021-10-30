@@ -56,7 +56,7 @@
             <div class="op-btn-wrap">
               <p-button styleClass="p-button-sm p-button-outlined p-button-secondary" (click)="showDialog()">編輯
               </p-button>
-              <p-button styleClass="p-button-sm p-button-outlined" (click)="showDialog()">預覽</p-button>
+              <p-button styleClass="p-button-sm p-button-outlined" (click)="callPop(met)">預覽</p-button>
             </div>
           </td>
         </tr>
@@ -66,3 +66,7 @@
 </div>
 
 <p-dialog header="系統維護中" [(visible)]="dis_Dialog"> 系統維護中 </p-dialog>
+
+<p-dialog header="會議資料" [(visible)]="dis_pop">
+  <app-pop [popMsg]='popMsg'></app-pop>
+</p-dialog>

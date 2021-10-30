@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
+import {DividerModule} from 'primeng/divider';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MetComponent } from './sheng/met/met.component';
 import { AddMetComponent } from './sheng/met/add-met/add-met.component';
 import { CalendarModule } from 'primeng/calendar';
+import { PopComponent } from './sheng/met/pop/pop.component';
 
 const appRoutes: Routes = [
   { path: '', component: TasksComponent },
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     FooterComponent,
     MetComponent,
     AddMetComponent,
+    PopComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ const appRoutes: Routes = [
     AngularEditorModule,
     BrowserAnimationsModule,
     DialogModule,
+    DividerModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
   ],
   providers: [],
