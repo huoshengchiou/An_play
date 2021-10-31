@@ -5,12 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { TableModule } from 'primeng/table';
-import { DialogModule } from 'primeng/dialog';
-import {DividerModule} from 'primeng/divider';
+
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { SharePrimeModule } from './share-prime.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,14 +50,10 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    ButtonModule,
-    InputTextModule,
-    TableModule,
     CalendarModule,
     AngularEditorModule,
     BrowserAnimationsModule,
-    DialogModule,
-    DividerModule,
+    SharePrimeModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
   ],
   providers: [],
