@@ -15,7 +15,7 @@
   <div class="list">
 
     <p-table [value]="mets" dataKey="id" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+      [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [(first)]='first'
       currentPageReportTemplate="第 {first} 至 {last} 筆 | 共 {totalRecords} 筆" [filterDelay]="0"
       [globalFilterFields]="['title']">
       <ng-template pTemplate="header">
@@ -30,7 +30,8 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
-        <div style="min-height: 680px">無會議資料</div>
+
+        <div style="padding: 5rem;min-height: 680px"> <b>無會議資料</b></div>
 
       </ng-template>
 

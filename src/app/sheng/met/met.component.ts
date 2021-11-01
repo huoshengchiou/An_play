@@ -10,6 +10,7 @@ import { met,popMsg } from '../domain/met';
 })
 export class MetComponent implements OnInit {
   mets: met[] = [];
+  first:number=0
   filterTt: string = '';
   dis_Dialog: boolean = false;
   dis_pop:boolean = false;
@@ -32,6 +33,7 @@ export class MetComponent implements OnInit {
   filterMets(): void {
     this.metService.filterMets(this.filterTt).subscribe((res) => {
       this.mets = res;
+      this.reset()
     });
   }
 
@@ -48,6 +50,10 @@ export class MetComponent implements OnInit {
   callPop(met:popMsg){
     this.popMsg=met
     this.dis_pop=true
+  }
+
+  reset(){
+    this.first=0
   }
 
   // dynamicStyles() {
