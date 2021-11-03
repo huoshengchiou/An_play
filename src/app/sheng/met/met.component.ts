@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MetService } from '../services/met.service';
-import { met,popMsg } from '../domain/met';
+import { met, popMsg } from '../domain/met';
 
 @Component({
   selector: 'app-met',
@@ -10,12 +10,12 @@ import { met,popMsg } from '../domain/met';
 })
 export class MetComponent implements OnInit {
   mets: met[] = [];
-  first:number=0
+  first: number = 0;
   filterTt: string = '';
   dis_Dialog: boolean = false;
-  dis_pop:boolean = false;
+  dis_pop: boolean = false;
   loading: boolean = true;
-  popMsg:popMsg|null=null
+  popMsg: popMsg | null = null;
 
   constructor(private metService: MetService) {}
 
@@ -33,7 +33,7 @@ export class MetComponent implements OnInit {
   filterMets(): void {
     this.metService.filterMets(this.filterTt).subscribe((res) => {
       this.mets = res;
-      this.reset()
+      this.reset();
     });
   }
 
@@ -47,13 +47,13 @@ export class MetComponent implements OnInit {
     this.dis_Dialog = !this.dis_Dialog;
   }
 
-  callPop(met:popMsg){
-    this.popMsg=met
-    this.dis_pop=true
+  callPop(met: popMsg) {
+    this.popMsg = met;
+    this.dis_pop = true;
   }
 
-  reset(){
-    this.first=0
+  reset() {
+    this.first = 0;
   }
 
   // dynamicStyles() {
